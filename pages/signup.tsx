@@ -4,13 +4,33 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 
 const Signup = () => {
-    const [value, setValue] = useState({
+
+    interface valueType {
+        username: string,
+        email: string,
+        password: string
+    }
+
+    const [value, setValue] = useState<valueType>({
         username: "",
+        email: "",
         password: "",
     })
 
     const handleFetch = () => {
-        console.log(value)
+        fetch("/api/signup", {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify({
+                username: value.username,
+                email: value.email,
+                password: value.password,
+            })
+        }).then((response) => {
+            return response.json()
+        })
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
