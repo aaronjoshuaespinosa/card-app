@@ -12,7 +12,7 @@ const FormInput:FunctionComponent<inputType> = (props) => {
     return (
         <div key={id}>
             <p>{name}</p>
-            <input type={`${type}`} name={`${name}`} className='border-slate-100 border-[1px] bg-stone-900 rounded-[5px] p-[12px] w-full' onChange={onChange} />
+            <input type={`${type}`} name={`${name}`} className='border-light border-[1px] bg-dark rounded-[5px] p-[12px] w-full' onChange={onChange} />
         </div>
     );
 }
