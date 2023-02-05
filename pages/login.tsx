@@ -1,3 +1,4 @@
+import FormInput from '@/components';
 import Head from 'next/head'
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -13,8 +14,22 @@ const Login = () => {
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(current => ({...current, [e.target.name]: e.target.value}))
+        setValue(current => ({ ...current, [e.target.name]: e.target.value }))
     }
+
+    const loginInputs = [
+        {
+            id: 0,
+            name: "username",
+            type: "text"
+        },
+        {
+            id: 1,
+            name: "password",
+            type: "password"
+        },
+    ]
+
     return (
         <>
             <Head>
@@ -25,17 +40,19 @@ const Login = () => {
                 <p>OMG WOW OMEGALUL GIGACHAD KEKW</p>
             </nav>
             <main className='w-full h-screen flex items-center justify-center'>
-                <div className='flex flex-col gap-y-[12px]'>
-                    <h1 className='font-bold text-center text-4xl'>log in</h1>
-                    <h4 className='text-center text-lg'>input your credentials below.</h4>
-                    <p>username</p>
-                    <input type="text" name="username" className='border-slate-100 border-[1px] bg-stone-900 rounded-[5px] p-[12px]' onChange={handleChange} />
-                    <p>password</p>
-                    <input type="password" name="password" className='border-slate-100 border-[1px] bg-stone-900 rounded-[5px] p-[12px]' onChange={handleChange} />
+                <div>
+                    <div className='flex flex-col gap-y-[16px] w-full'>
+                        <h1 className='font-bold text-center text-4xl'>log in</h1>
+                        <h4 className='text-center text-lg'>input your credentials below.</h4>
 
-                    {/* button */}
-                    <div className='bg-slate-100 text-stone-900 rounded-[5px] p-[12px] cursor-pointer'>
-                        <p className='font-bold text-center' onClick={handleFetch}>LOG IN</p>
+                        {loginInputs.map((input) => (
+                            <FormInput id={input.id} name={input.name} type={input.type} onChange={handleChange} />
+                        ))}
+
+                        {/* button */}
+                        <div className='bg-slate-100 text-stone-900 rounded-[5px] p-[12px] cursor-pointer'>
+                            <p className='font-bold text-center' onClick={handleFetch}>LOG IN</p>
+                        </div>
                     </div>
                 </div>
             </main>
