@@ -9,10 +9,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const client = await clientPromise;
         const db = client.db("cardApp");
 
-        const find = await db.collection("cardUsers").findOne({ email })
+        const findEmail = await db.collection("cardUsers").findOne({ email })
+        const findUsername = await db.collection("cardUsers").findOne({ username })
 
-        if (find) {
-            res.status(409).json({ success: false, message: "Email already registered", error: 'email' })
+        if (findEmail) {
+            res.status(409).json({ success: false, message: "Email already registered.", error: 'email' })
+        }
+
+        else if (findUsername) {
+            res.status(409).json({ success: false, message: "Username already taken.", error: 'username' })
         }
 
         else {

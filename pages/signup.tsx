@@ -2,11 +2,32 @@ import FormInput from '@/components';
 import Head from 'next/head'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Signup = () => {
 
     const router = useRouter()
+
+    const signupInputs = [
+        {
+            id: 0,
+            name: "email",
+            type: "email",
+            title: "Email must have '@' and '.com' on it."
+        },
+        {
+            id: 1,
+            name: "username",
+            type: "text",
+            title: "Username must be 8 characters and above."
+        },
+        {
+            id: 2,
+            name: "password",
+            type: "password",
+            title: "Password must be 8 characters and above."
+        },
+    ]
 
     interface valueType {
         username: string,
@@ -26,7 +47,9 @@ const Signup = () => {
         password: "",
     })
 
-    const handleFetch = () => {
+    const [valid, setValid] = useState(false)
+
+    const handleClick = () => {
         fetch("/api/signup", {
             method: "POST",
             headers: {
@@ -45,33 +68,39 @@ const Signup = () => {
             }
             else {
                 if (res.error === "email") {
-                    console.log("Email taken.")
+                    setError(value => ({ ...value, "email": "Email already registered." }))
+                    console.log(error.email)
+                }
+
+                else if (res.error === "username") {
+                    setError(value => ({ ...value, "username": "Username already taken." }))
+                    console.log(error.username)
                 }
             }
         })
+    }
+
+    useEffect(() => {
+        if (validateEmail(value.email) && value.username.length > 7 && value.password.length > 7) {
+            setValid(true)
+        }
+        else {
+            setValid(false)
+        }
+    }, [value])
+
+
+    function validateEmail(mail: string) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+            return (true)
+        }
+        return (false)
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(current => ({ ...current, [e.target.name]: e.target.value }))
     }
 
-    const signupInputs = [
-        {
-            id: 0,
-            name: "username",
-            type: "text"
-        },
-        {
-            id: 1,
-            name: "email",
-            type: "email"
-        },
-        {
-            id: 2,
-            name: "password",
-            type: "password"
-        },
-    ]
     return (
         <>
             <Head>
@@ -88,12 +117,12 @@ const Signup = () => {
                         <h4 className='text-center text-lg'>input your credentials below.</h4>
 
                         {signupInputs.map((input) => (
-                            <FormInput id={input.id} name={input.name} type={input.type} onChange={handleChange} />
+                            <FormInput id={input.id} name={input.name} title={input.title} type={input.type} onChange={handleChange} />
                         ))}
 
                         {/* button */}
-                        <div className='bg-light text-dark rounded-[5px] p-[12px] cursor-pointer'>
-                            <p className='font-bold text-center' onClick={handleFetch}>Sign up</p>
+                        <div className='bg-light text-dark rounded-[5px] p-[12px] cursor-pointer' onClick={handleClick} style={valid ? { pointerEvents: "auto", opacity: "100%" } : { pointerEvents: "none", opacity: "50%" }}>
+                            <p className='font-bold text-center'>SIGN UP</p>
                         </div>
                         <Link href="/login"><p className='underline text-center'>i have account UwU</p></Link>
                     </div>

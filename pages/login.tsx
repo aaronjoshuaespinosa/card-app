@@ -4,31 +4,36 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 
 const Login = () => {
+
+    const loginInputs = [
+        {
+            id: 0,
+            name: "username",
+            type: "text",
+            title: "Must be your registered username."
+        },
+        {
+            id: 1,
+            name: "password",
+            type: "password",
+            title: "Must be your registered password."
+        },
+    ]
+    
     const [value, setValue] = useState({
         username: "",
         password: "",
     })
 
-    const handleFetch = () => {
+    const [valid, setValid] = useState(false)
+
+    const handleClick = () => {
         console.log(value)
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(current => ({ ...current, [e.target.name]: e.target.value }))
     }
-
-    const loginInputs = [
-        {
-            id: 0,
-            name: "username",
-            type: "text"
-        },
-        {
-            id: 1,
-            name: "password",
-            type: "password"
-        },
-    ]
 
     return (
         <>
@@ -46,12 +51,12 @@ const Login = () => {
                         <h4 className='text-center text-lg'>input your credentials below.</h4>
 
                         {loginInputs.map((input) => (
-                            <FormInput id={input.id} name={input.name} type={input.type} onChange={handleChange} />
+                            <FormInput id={input.id} name={input.name} title={input.title} type={input.type} onChange={handleChange} />
                         ))}
 
                         {/* button */}
-                        <div className='bg-light text-dark rounded-[5px] p-[12px] cursor-pointer'>
-                            <p className='font-bold text-center' onClick={handleFetch}>LOG IN</p>
+                        <div className='bg-light text-dark rounded-[5px] p-[12px] cursor-pointer' onClick={handleClick} style={valid ? { pointerEvents: "auto", opacity: "100%" } : { pointerEvents: "none", opacity: "50%" }}>
+                            <p className='font-bold text-center'>LOG IN</p>
                         </div>
                         <Link href="/signup"><p className='underline text-center'>i want to join UwU</p></Link>
                     </div>
