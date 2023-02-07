@@ -1,9 +1,12 @@
 import FormInput from '@/components';
 import Head from 'next/head'
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 const Signup = () => {
+
+    const router = useRouter()
 
     interface valueType {
         username: string,
@@ -12,6 +15,12 @@ const Signup = () => {
     }
 
     const [value, setValue] = useState<valueType>({
+        username: "",
+        email: "",
+        password: "",
+    })
+
+    const [error, setError] = useState({
         username: "",
         email: "",
         password: "",
@@ -30,6 +39,15 @@ const Signup = () => {
             })
         }).then((response) => {
             return response.json()
+        }).then((res) => {
+            if (res.success) {
+                router.push("/login")
+            }
+            else {
+                if (res.error === "email") {
+                    console.log("Email taken.")
+                }
+            }
         })
     }
 
@@ -46,7 +64,7 @@ const Signup = () => {
         {
             id: 1,
             name: "email",
-            type: "text"
+            type: "email"
         },
         {
             id: 2,
