@@ -106,7 +106,6 @@ const Signup = () => {
         else {
             setValid(false)
         }
-        console.log(value)
     }, [value])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
