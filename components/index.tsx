@@ -1,3 +1,7 @@
 import FormInput from "./FormInput";
+import NavBar from "./NavBar";
 
-export default FormInput
+export {
+    FormInput,
+    NavBar
+}

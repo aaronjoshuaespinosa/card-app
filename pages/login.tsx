@@ -1,4 +1,4 @@
-import FormInput from '@/components';
+import { FormInput, NavBar } from '@/components';
 import Head from 'next/head'
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -21,7 +21,7 @@ const Login = () => {
             title: "Must be your registered password."
         },
     ]
-    
+
     const [value, setValue] = useState({
         username: "",
         password: "",
@@ -42,10 +42,7 @@ const Login = () => {
             <Head>
                 <title>Card App / Login</title>
             </Head>
-            <nav className='fixed w-full h-auto flex items-center justify-between py-[24px] px-[48px]'>
-                <p className='font-bold text-4xl'>Card App</p>
-                <p>OMG WOW OMEGALUL GIGACHAD KEKW</p>
-            </nav>
+            <NavBar />
             <main className='w-full h-screen flex items-center justify-center'>
                 <div>
                     <div className='flex flex-col gap-y-[16px] w-full'>
