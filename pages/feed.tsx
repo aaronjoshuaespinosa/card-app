@@ -1,7 +1,12 @@
+import { NavBar } from "@/components";
+
 const feed = () => {
     return (
         <>
-            <p>Hello</p>
+            <NavBar />
+            <main className='w-full h-screen flex items-center justify-center'>
+                <p>Hello</p>
+            </main>
         </>
     );
 }
