@@ -3,7 +3,12 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
+    const bcrypt = require('bcrypt');
+
     const { username, email, password } = req.body
+
+    const saltRounds = 10;
+    const hashed = await bcrypt.hash(password, saltRounds)
 
     try {
         const client = await clientPromise;
@@ -21,11 +26,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
 
         else {
+
             const add = db.collection("cardUsers").insertOne(
                 {
                     username,
                     email,
-                    password
+                    password: hashed
                 }
             )
 
