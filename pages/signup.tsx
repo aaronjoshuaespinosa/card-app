@@ -12,18 +12,28 @@ const Signup = () => {
         {
             id: 0,
             name: "email",
+            label: "email",
             type: "email",
             title: "Email must have '@' and '.com' on it."
         },
         {
             id: 1,
             name: "username",
+            label: "username",
             type: "text",
             title: "Username must be 8 characters and above."
         },
         {
             id: 2,
             name: "password",
+            label: "password",
+            type: "password",
+            title: "Password must be 8 characters and above."
+        },
+        {
+            id: 3,
+            name: "confPassword",
+            label: "confirm password",
             type: "password",
             title: "Password must be 8 characters and above."
         },
@@ -32,13 +42,15 @@ const Signup = () => {
     interface valueType {
         username: string,
         email: string,
-        password: string
+        password: string,
+        confPassword: string
     }
 
     const [value, setValue] = useState<valueType>({
         username: "",
         email: "",
         password: "",
+        confPassword: "",
     })
 
     const [error, setError] = useState({
@@ -80,22 +92,22 @@ const Signup = () => {
         })
     }
 
-    useEffect(() => {
-        if (validateEmail(value.email) && value.username.length > 7 && value.password.length > 7) {
-            setValid(true)
-        }
-        else {
-            setValid(false)
-        }
-    }, [value])
-
-
     function validateEmail(mail: string) {
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
             return (true)
         }
         return (false)
     }
+
+    useEffect(() => {
+        if (validateEmail(value.email) && value.username.length > 7 && value.password.length > 7 && value.confPassword === value.password) {
+            setValid(true)
+        }
+        else {
+            setValid(false)
+        }
+        console.log(value)
+    }, [value])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(current => ({ ...current, [e.target.name]: e.target.value }))
@@ -117,14 +129,17 @@ const Signup = () => {
                         <h4 className='text-center text-lg'>input your credentials below.</h4>
 
                         {signupInputs.map((input) => (
-                            <FormInput id={input.id} name={input.name} title={input.title} type={input.type} onChange={handleChange} />
+                            <FormInput id={input.id} name={input.name} label={input.label} title={input.title} type={input.type} onChange={handleChange} />
                         ))}
 
                         {/* button */}
                         <div className='bg-light text-dark rounded-[5px] p-[12px] cursor-pointer' onClick={handleClick} style={valid ? { pointerEvents: "auto", opacity: "100%" } : { pointerEvents: "none", opacity: "50%" }}>
                             <p className='font-bold text-center'>SIGN UP</p>
                         </div>
-                        <Link href="/login"><p className='underline text-center'>i have account UwU</p></Link>
+
+                        <hr />
+
+                        <p className='text-center text-sm'>Already have an account? <Link href="/login"><span className='underline font-bold'>Login</span></Link></p>
                     </div>
                 </div>
             </main>
