@@ -83,7 +83,6 @@ const Signup = () => {
                     setError(value => ({ ...value, "email": "Email already registered." }))
                     console.log(error.email)
                 }
-
                 else if (res.error === "username") {
                     setError(value => ({ ...value, "username": "Username already taken." }))
                     console.log(error.username)
@@ -99,6 +98,10 @@ const Signup = () => {
         return (false)
     }
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(current => ({ ...current, [e.target.name]: e.target.value }))
+    }
+
     useEffect(() => {
         if (validateEmail(value.email) && value.username.length > 7 && value.password.length > 7 && value.confPassword === value.password) {
             setValid(true)
@@ -107,10 +110,6 @@ const Signup = () => {
             setValid(false)
         }
     }, [value])
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(current => ({ ...current, [e.target.name]: e.target.value }))
-    }
 
     return (
         <>

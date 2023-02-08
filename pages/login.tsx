@@ -1,9 +1,12 @@
 import { FormInput, NavBar } from '@/components';
 import Head from 'next/head'
 import Link from 'next/link';
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useState, useEffect } from 'react';
 
 const Login = () => {
+
+    const router = useRouter()
 
     const loginInputs = [
         {
@@ -22,7 +25,17 @@ const Login = () => {
         },
     ]
 
-    const [value, setValue] = useState({
+    interface valueType {
+        username: string,
+        password: string,
+    }
+
+    const [value, setValue] = useState<valueType>({
+        username: "",
+        password: "",
+    })
+
+    const [error, setError] = useState({
         username: "",
         password: "",
     })
@@ -30,12 +43,46 @@ const Login = () => {
     const [valid, setValid] = useState(false)
 
     const handleClick = () => {
-        console.log(value)
+        fetch("/api/login", {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify({
+                username: value.username,
+                password: value.password,
+            })
+        }).then((response) => {
+            return response.json()
+        }).then((res) => {
+            if (res.loggedIn) {
+                router.push("/feed")
+            }
+            else {
+                if (res.error === "username") {
+                    setError(value => ({ ...value, "username": "Username not found." }))
+                    console.log(error.username)
+                }
+                else if (res.error === "password") {
+                    setError(value => ({ ...value, "password": "Wrong password." }))
+                    console.log(error.password)
+                }
+            }
+        })
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(current => ({ ...current, [e.target.name]: e.target.value }))
     }
+
+    useEffect(() => {
+        if (value.username.length > 7 && value.password.length > 7) {
+            setValid(true)
+        }
+        else {
+            setValid(false)
+        }
+    }, [value])
 
     return (
         <>
