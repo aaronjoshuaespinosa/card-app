@@ -116,9 +116,9 @@ const Signup = () => {
             <Head>
                 <title>Card App / Sign Up</title>
             </Head>
-            <NavBar />
             <main className='w-full h-screen flex items-center justify-center'>
-                <div>
+            <NavBar />
+                <div className='min-w-[15rem]'>
                     <div className='flex flex-col gap-y-[16px] w-full'>
                         <h1 className='font-bold text-center text-4xl'>sign up</h1>
                         <h4 className='text-center text-lg'>input your credentials below.</h4>

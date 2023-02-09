@@ -1,14 +1,18 @@
-import { NavBar } from "@/components";
+import { NavBar } from "@/components"
+import Head from 'next/head'
 
-const feed = () => {
+const Feed = () => {
     return (
         <>
+            <Head>
+                <title>Card App / Feed</title>
+            </Head>
             <NavBar />
             <main className='w-full h-screen flex items-center justify-center'>
                 <p>Hello</p>
-            </main>
+            </main>Feed
         </>
     );
 }
 
-export default feed;
+export default Feed;

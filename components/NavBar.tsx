@@ -17,10 +17,10 @@ const NavBar = () => {
         })
     }
     return (
-        <nav className='fixed w-full h-auto flex items-center justify-between py-[24px] px-[48px]'>
+        <nav className='fixed w-full h-auto max-w-[100rem] flex items-center justify-between py-[24px] px-[48px] top-0'>
             <p className='font-bold text-4xl'>Card App</p>
             <p>OMG WOW OMEGALUL GIGACHAD KEKW</p>
-            <p className="cursor-pointer" onClick={handleLogout} style={router.pathname === "/login" || router.pathname === "/signup" ? { display: "none" } : { display: "block" }}>Logout</p>
+            <p className="cursor-pointer" onClick={handleLogout} style={router.pathname === "/login" || router.pathname === "/signup" || router.pathname === "/password-reset" ? { display: "none" } : { display: "block" }}>Logout</p>
         </nav>
     );
 }

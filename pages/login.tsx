@@ -89,9 +89,9 @@ const Login = () => {
             <Head>
                 <title>Card App / Login</title>
             </Head>
-            <NavBar />
             <main className='w-full h-screen flex items-center justify-center'>
-                <div>
+            <NavBar />
+                <div className='min-w-[15rem]'>
                     <div className='flex flex-col gap-y-[16px] w-full'>
                         <h1 className='font-bold text-center text-4xl'>log in</h1>
                         <h4 className='text-center text-lg'>input your credentials below.</h4>
@@ -105,7 +105,7 @@ const Login = () => {
                             <p className='font-bold text-center'>LOG IN</p>
                         </div>
 
-                        <p className='underline cursor-pointer text-center text-sm'>Forgot password?</p>
+                        <Link href="/password-reset"><p className='underline cursor-pointer text-center text-sm'>Forgot password?</p></Link>
 
                         <hr />
 
