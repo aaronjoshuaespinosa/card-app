@@ -9,6 +9,9 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      'space': ['Space Grotesk']
+    },
     extend: {
       colors: {
         dark: "#0d1117",
