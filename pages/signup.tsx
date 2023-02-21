@@ -121,7 +121,7 @@ const Signup = () => {
                 <title>Kards / Sign Up</title>
             </Head>
             <main className='w-full h-screen flex items-center justify-center'>
-                <div className='w-[15rem]'>
+                <div className='w-[17rem]'>
                     <div className='flex flex-col gap-y-[16px] w-full'>
                         <div className='flex gap-x-2 items-center justify-center'>
                             <img className='w-[2.5rem]' src="https://ik.imagekit.io/xzgmktvzg/Kards/kards_logo.png?ik-sdk-version=javascript-1.4.3&updatedAt=1676989380604" alt="logo" />
