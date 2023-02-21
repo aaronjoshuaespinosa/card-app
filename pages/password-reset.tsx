@@ -14,7 +14,8 @@ const PasswordReset = () => {
             name: "email",
             label: "email",
             type: "text",
-            title: "Must be your registered email."
+            title: "Must be your registered email.",
+            placeholder: "hello@email.com",
         },
     ]
 
@@ -67,7 +68,7 @@ const PasswordReset = () => {
                         <h4 className='text-center text-base text-secondary font-bold'>please enter your email below.</h4>
 
                         {loginInputs.map((input) => (
-                            <FormInput id={input.id} name={input.name} label={input.label} title={input.title} type={input.type} onChange={handleChange} />
+                            <FormInput id={input.id} name={input.name} label={input.label} title={input.title} type={input.type} placeholder={input.placeholder} onChange={handleChange} />
                         ))}
 
                         {/* button */}

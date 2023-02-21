@@ -20,3 +20,8 @@ select:-webkit-autofill:focus {
   box-shadow: 0 0 0px 1000px #0D1117 inset;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+input::placeholder {
+  opacity: 0.7;
+  color: #5c636e;
+}

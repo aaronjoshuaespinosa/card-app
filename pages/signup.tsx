@@ -14,28 +14,32 @@ const Signup = () => {
             name: "email",
             label: "email",
             type: "email",
-            title: "Email must have '@' and '.com' on it."
+            title: "Email must have '@' and '.com' on it.",
+            placeholder: "hello@email.com",
         },
         {
             id: 1,
             name: "username",
             label: "username",
             type: "text",
-            title: "Username must be 8 characters and above."
+            title: "Username must be 8 characters and above.",
+            placeholder: "Must be 8 characters & above.",
         },
         {
             id: 2,
             name: "password",
             label: "password",
             type: "password",
-            title: "Password must be 8 characters and above."
+            title: "Password must be 8 characters and above.",
+            placeholder: "Must be 8 characters & above.",
         },
         {
             id: 3,
             name: "confPassword",
             label: "confirm password",
             type: "password",
-            title: "Password must be 8 characters and above."
+            title: "Password must be 8 characters and above.",
+            placeholder: "Must match above password.",
         },
     ]
 
@@ -123,10 +127,10 @@ const Signup = () => {
                             <img className='w-[2.5rem]' src="https://ik.imagekit.io/xzgmktvzg/Kards/kards_logo.png?ik-sdk-version=javascript-1.4.3&updatedAt=1676989380604" alt="logo" />
                             <p className='font-bold text-3xl'>Kards</p>
                         </div>
-                        <h4 className='text-center text-base text-secondary font-bold'>signup to collects kards and create you own dekk.</h4>
+                        <h4 className='text-center text-base text-secondary font-bold'>sign up to kollect kards or kreate you own dekk.</h4>
 
                         {signupInputs.map((input) => (
-                            <FormInput id={input.id} name={input.name} label={input.label} title={input.title} type={input.type} onChange={handleChange} />
+                            <FormInput id={input.id} name={input.name} label={input.label} title={input.title} type={input.type} placeholder={input.placeholder} onChange={handleChange} />
                         ))}
 
                         {/* button */}

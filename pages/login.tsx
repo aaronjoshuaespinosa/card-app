@@ -14,14 +14,16 @@ const Login = () => {
             name: "username",
             label: "username",
             type: "text",
-            title: "Must be your registered username."
+            title: "Must be your registered username.",
+            placeholder: "",
         },
         {
             id: 1,
             name: "password",
             label: "password",
             type: "password",
-            title: "Must be your registered password."
+            title: "Must be your registered password.",
+            placeholder: "",
         },
     ]
 
@@ -98,7 +100,7 @@ const Login = () => {
                         </div>
 
                         {loginInputs.map((input) => (
-                            <FormInput id={input.id} name={input.name} label={input.label} title={input.title} type={input.type} onChange={handleChange} />
+                            <FormInput id={input.id} name={input.name} label={input.label} title={input.title} type={input.type} placeholder={input.placeholder} onChange={handleChange} />
                         ))}
 
                         {/* button */}
