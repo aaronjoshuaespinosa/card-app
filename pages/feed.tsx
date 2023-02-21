@@ -7,11 +7,11 @@ const Feed = () => {
             <Head>
                 <title>Kards / Feed</title>
             </Head>
-            <div className="w-full flex justify-center items-center">
-                <NavBar />
-            </div>
             <main className='w-full h-screen flex items-center justify-center'>
-                <p>Hello</p>
+                <NavBar />
+                <div className="flex h-auto w-full max-w-[75rem] px-10 justify-start">
+                    <p>Hello</p>
+                </div>
             </main>Feed
         </>
     );
