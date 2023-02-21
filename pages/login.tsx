@@ -87,21 +87,22 @@ const Login = () => {
     return (
         <>
             <Head>
-                <title>Card App / Login</title>
+                <title>Kards / Login</title>
             </Head>
             <main className='w-full h-screen flex items-center justify-center'>
-            <NavBar />
-                <div className='min-w-[15rem]'>
+                <div className='max-w-[15rem]'>
                     <div className='flex flex-col gap-y-[16px] w-full'>
-                        <h1 className='font-bold text-center text-4xl'>log in</h1>
-                        <h4 className='text-center text-lg'>input your credentials below.</h4>
+                        <div className='flex gap-x-2 items-center justify-center py-2'>
+                            <img className='w-[2.5rem]' src="https://ik.imagekit.io/xzgmktvzg/Kards/kards_logo.png?ik-sdk-version=javascript-1.4.3&updatedAt=1676989380604" alt="logo" />
+                            <p className='font-bold text-3xl'>Kards</p>
+                        </div>
 
                         {loginInputs.map((input) => (
                             <FormInput id={input.id} name={input.name} label={input.label} title={input.title} type={input.type} onChange={handleChange} />
                         ))}
 
                         {/* button */}
-                        <div className='bg-light text-dark rounded-[5px] p-[12px] cursor-pointer' onClick={handleClick} style={valid ? { pointerEvents: "auto", opacity: "100%" } : { pointerEvents: "none", opacity: "50%" }}>
+                        <div className='bg-lblue text-dark rounded-[5px] p-[12px] cursor-pointer transition-all ease-in-out duration-[0.2s]' onClick={handleClick} style={valid ? { pointerEvents: "auto", opacity: "100%" } : { pointerEvents: "none", opacity: "50%" }}>
                             <p className='font-bold text-center'>LOG IN</p>
                         </div>
 
@@ -109,9 +110,12 @@ const Login = () => {
 
                         <hr />
 
-                        <p className='text-center text-sm'>Don't have an account? <Link href="/signup"><span className='underline font-bold'>Sign up</span></Link></p>
+                        <p className='text-center text-sm'>Don't have an account? <Link href="/signup"><span className='underline font-bold text-lblue'>Sign up</span></Link></p>
                     </div>
                 </div>
+                <footer className='absolute bottom-0 py-8'>
+                    <p className='text-sm text-secondary'>Made with ♥ by AJ Espinosa</p>
+                </footer>
             </main>
         </>
     );
