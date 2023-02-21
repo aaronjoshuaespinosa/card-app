@@ -7,7 +7,9 @@ const Feed = () => {
             <Head>
                 <title>Card App / Feed</title>
             </Head>
-            <NavBar />
+            <div className="w-full flex justify-center items-center">
+                <NavBar />
+            </div>
             <main className='w-full h-screen flex items-center justify-center'>
                 <p>Hello</p>
             </main>Feed
