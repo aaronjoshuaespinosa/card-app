@@ -10,9 +10,9 @@ const Feed = () => {
             <main className='w-full h-screen flex items-center justify-center'>
                 <NavBar />
                 <div className="flex h-auto w-full max-w-[75rem] px-10 justify-start">
-                    <p>Hello</p>
+                    <p>This page is under construction ^^</p>
                 </div>
-            </main>Feed
+            </main>
         </>
     );
 }
