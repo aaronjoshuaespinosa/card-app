@@ -1,4 +1,4 @@
-import { FormInput, NavBar } from '@/components';
+import { FormInput } from '@/components';
 import Head from 'next/head'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
